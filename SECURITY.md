@@ -77,3 +77,4 @@ Even if a future screen forgot to ask for the password, the service would refuse
 the hash-only storage, right and wrong passwords, weak-password rejection, one-time setup, the lockout and its
 expiry, session expiry, password change, encryption round-trip (including Hebrew text), tamper detection, a wrong key,
 and that every admin operation is refused without a valid session.
+

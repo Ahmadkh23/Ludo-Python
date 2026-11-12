@@ -1,7 +1,7 @@
 package com.eduludo.persistence;
 
-import com.eduludo.model.Question;
-import com.eduludo.model.QuestionLevel;
+import com.eduludo.Model.Question;
+import com.eduludo.Model.QuestionLevel;
 import com.eduludo.testing.Test;
 
 import java.io.IOException;
@@ -85,3 +85,4 @@ public class QuestionJsonAndPathsTest {
         assertTrue(new CsvHistoryRepository(file).findAll().isEmpty(), "header and blank lines only");
     }
 }
+

@@ -38,3 +38,4 @@ public final class DataPaths {
         return base.resolve("admin.properties");
     }
 }
+

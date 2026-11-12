@@ -88,3 +88,4 @@ public class MiniJsonTest {
         assertThrows(IllegalArgumentException.class, () -> MiniJson.write(List.of('c')), "a char inside a list");
     }
 }
+
