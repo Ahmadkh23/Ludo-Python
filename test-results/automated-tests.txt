@@ -1,7 +1,8 @@
-=== Cleaning
-=== Compiling application
-=== Compiling tests
-=== Running tests
+EduLudo - automated test run
+Date: 12/11/2026 20:27
+Machine: Darwin 27.2.0 arm64, openjdk version "21.0.7" 2025-04-15 LTS
+Command: sh build.sh
+
 BoardFactoryTest
   PASS  eachColourHasItsOwnArrowsOnItsPathAndItsOwnFinish
   PASS  everyPathIsContinuousUniqueAndInsideTheGrid
@@ -118,7 +119,9 @@ MiniJsonTest
   PASS  wholeNumbersBecomeLongsAndDecimalsBecomeDoubles
 PersistenceTest
   PASS  aDamagedHistoryLineIsSkipped
+  PASS  aHistoryFileSavedByExcelWithAByteOrderMarkIsStillUsable
   PASS  aMismatchedHistoryHeaderIsNotOverwritten
+  PASS  anEmptyHistoryFileGetsItsHeaderBackInsteadOfFailingForever
   PASS  attachedCourseTemplateSampleIsRead
   PASS  courseHistoryNeedsTwoNamesAndCsvSafeNames
   PASS  firstRunStartsTheHistoryFromTheBundledLecturerCsv
@@ -153,6 +156,4 @@ QuestionServiceTest
   PASS  invalidQuestionsAreRejected
   PASS  theBankKeepsAtLeastThirtyQuestionsAndEveryLevel
 
-Tests run: 134, passed: 134, failed: 0
-=== Creating dist/EduLudo.jar
-Done: dist/EduLudo.jar  (run with: java -jar dist/EduLudo.jar)
+Tests run: 136, passed: 136, failed: 0

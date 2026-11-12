@@ -159,4 +159,34 @@ public class PersistenceTest {
                         new GameRecord.RankedPlayer(2, "C", null, false)));
         assertThrows(IllegalArgumentException.class, () -> repo.save(invalidName), "CSV delimiters are rejected");
     }
+
+    @Test
+    void aHistoryFileSavedByExcelWithAByteOrderMarkIsStillUsable() throws IOException {
+        Path file = Files.createTempDirectory("eduludo-bom").resolve("history.csv");
+        // Excel writes a byte-order mark in front of the header when it saves a file as "CSV UTF-8".
+        Files.writeString(file, "\uFEFF" + CsvHistoryRepository.HEADER + System.lineSeparator()
+                + "1,easy,01/01/2026;10:00:00,A,B,,,00:01:00" + System.lineSeparator());
+        CsvHistoryRepository repo = new CsvHistoryRepository(file);
+        assertEquals(1, repo.findAll().size(), "the existing game is still read");
+        repo.save(new GameRecord("next", LocalDateTime.of(2026, 1, 2, 11, 0), Difficulty.EASY, 120,
+                List.of(new GameRecord.RankedPlayer(1, "C", null, false),
+                        new GameRecord.RankedPlayer(2, "D", null, false))));
+        assertEquals(2, repo.findAll().size(), "a new game can still be saved");
+        assertTrue(Files.readAllLines(file).get(2).startsWith("2,easy,02/01/2026;11:00:00"),
+                "the new row continues the sequence");
+    }
+
+    @Test
+    void anEmptyHistoryFileGetsItsHeaderBackInsteadOfFailingForever() throws IOException {
+        Path file = Files.createTempDirectory("eduludo-empty").resolve("history.csv");
+        Files.writeString(file, "");  // an interrupted first write leaves a 0-byte file behind
+        CsvHistoryRepository repo = new CsvHistoryRepository(file);
+        assertTrue(repo.findAll().isEmpty(), "an empty history reads as no games, not as an error");
+        repo.save(new GameRecord("first", LocalDateTime.of(2026, 1, 3, 12, 0), Difficulty.MEDIUM, 90,
+                List.of(new GameRecord.RankedPlayer(1, "A", null, false),
+                        new GameRecord.RankedPlayer(2, "B", null, false))));
+        List<String> lines = Files.readAllLines(file);
+        assertEquals(CsvHistoryRepository.HEADER, lines.get(0), "the header is written back");
+        assertEquals(1, repo.findAll().size(), "the game is saved");
+    }
 }

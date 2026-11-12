@@ -67,8 +67,8 @@ All data is saved in `<your home folder>/.eduludo/` (always writable, also when 
 
 | File | Content |
 |---|---|
-| `questions.dat` | question bank, encrypted with AES-GCM (created from the 36 built-in questions on first start) |
-| `history.csv` | finished games (opens in Excel) |
+| `questions.dat` | question bank, encrypted with AES-GCM (created from the 42 built-in questions on first start) |
+| `history.csv` | finished games in the course CSV format (opens in Excel). Started from the lecturer's CSV on first run. |
 | `admin.properties` | salted PBKDF2 hash of the admin password (never the password itself) |
 | `error.log` | written only if an unexpected error happens |
 
@@ -79,14 +79,14 @@ To use another folder: `java -Deduludo.data=C:\some\folder -jar EduLudo.jar`.
 ```
 src/main/java/com/eduludo/
   App.java              entry point – wires everything together
-  model/                game rules (Model): Game, Board, BoardFactory, Piece, Player, Surprise, dice/, ai/
-  controller/           AppController, GameController, AdminController (Controller)
-  view/                 Swing screens and dialogs (View)
+  Model/                game rules (Model): Game, Board, BoardFactory, Piece, Player, Surprise, dice/, ai/
+  Controller/           AppController, GameController, AdminController (Controller)
+  View/                 Swing screens and dialogs (View)
   service/              QuestionService – the only gateway to the question bank
   security/             AuthService, PasswordHasher, CryptoBox, AdminSession
   persistence/          repositories (DAO): encrypted questions, CSV history, JSON
-src/main/resources/     the 36 default questions
-src/test/java/          63 automated tests + a small test runner (no JUnit download needed)
+src/main/resources/     the 42 default questions + the lecturer's history CSV
+src/test/java/          136 automated tests + a small test runner (no JUnit download needed)
 ```
 
 ## Credits

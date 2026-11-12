@@ -7,10 +7,10 @@ reviews another member's pull requests, and writes the tests for their own area.
 
 | Member | Area | Main files | Tests they own |
 |---|---|---|---|
-| **A – Rules & model** | game engine, dice, blocks, captures, 6-rule, surprises, computer player | `model/Game.java`, `model/Surprise.java`, `model/dice/*`, `model/ai/*` | `GameRulesTest`, `ComputerPlayerTest` |
-| **B – Board & game screen** | board geometry for the 3 levels, drawing, animation, dice view, game screen | `model/BoardFactory.java`, `model/Board.java`, `view/BoardCanvas.java`, `view/DiceView.java`, `view/GamePanel.java` | `BoardFactoryTest` |
-| **C – Questions & security** | question bank (content!), admin wizard, login, encryption | `questions-default.json`, `service/*`, `security/*`, `view/AdminPanel.java`, `view/QuestionEditorDialog.java`, `view/LoginDialog.java`, `controller/AdminController.java`, `SECURITY.md` | `SecurityTest`, `QuestionServiceTest` |
-| **D – Flow, data & delivery** | start/setup/history screens, game controller, history storage, build scripts, release, docs | `controller/AppController.java`, `controller/GameController.java`, `view/StartPanel.java`, `view/SetupPanel.java`, `view/HistoryPanel.java`, `persistence/*`, `build.bat`, `README.md` | `PersistenceTest` |
+| **A – Rules & model** | game engine, dice, blocks, captures, 6-rule, surprises, computer player | `Model/Game.java`, `Model/Surprise.java`, `Model/dice/*`, `Model/ai/*` | `GameRulesTest`, `ComputerPlayerTest` |
+| **B – Board & game screen** | board geometry for the 3 levels, drawing, animation, dice view, game screen | `Model/BoardFactory.java`, `Model/Board.java`, `View/BoardCanvas.java`, `View/DiceView.java`, `View/GamePanel.java` | `BoardFactoryTest` |
+| **C – Questions & security** | question bank (content!), admin wizard, login, encryption | `questions-default.json`, `service/*`, `security/*`, `View/AdminPanel.java`, `View/QuestionEditorDialog.java`, `View/LoginDialog.java`, `Controller/AdminController.java`, `SECURITY.md` | `SecurityTest`, `QuestionServiceTest` |
+| **D – Flow, data & delivery** | start/setup/history screens, game controller, history storage, build scripts, release, docs | `Controller/AppController.java`, `Controller/GameController.java`, `View/StartPanel.java`, `View/SetupPanel.java`, `View/HistoryPanel.java`, `persistence/*`, `build.bat`, `README.md` | `PersistenceTest` |
 
 ## Sprints
 

@@ -62,9 +62,10 @@ public final class CsvHistoryRepository implements HistoryRepository {
     public synchronized void save(GameRecord r) {
         try {
             Files.createDirectories(file.toAbsolutePath().getParent());
-            if (!Files.exists(file)) {
+            if (isMissingOrEmpty()) {
+                // An interrupted first write can leave a 0-byte file behind; it still needs its header.
                 Files.writeString(file, HEADER + System.lineSeparator(), StandardCharsets.UTF_8,
-                        StandardOpenOption.CREATE_NEW);
+                        StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
             }
             List<String> lines = readValidatedLines();
             long gameId = nextGameId(lines);
@@ -80,8 +81,12 @@ public final class CsvHistoryRepository implements HistoryRepository {
     @Override
     public synchronized List<GameRecord> findAll() {
         List<GameRecord> result = new ArrayList<>();
-        if (!Files.exists(file)) {
-            return result;
+        try {
+            if (isMissingOrEmpty()) {
+                return result;
+            }
+        } catch (IOException e) {
+            throw new UncheckedIOException("Could not read the game history", e);
         }
         List<String> lines;
         try {
@@ -104,13 +109,25 @@ public final class CsvHistoryRepository implements HistoryRepository {
         return result;
     }
 
+    /** A byte-order mark, which Excel writes in front of the header when it saves a file as "CSV UTF-8". */
+    private static final String BYTE_ORDER_MARK = "\uFEFF";
+
     private List<String> readValidatedLines() throws IOException {
         List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+        if (!lines.isEmpty() && lines.get(0).startsWith(BYTE_ORDER_MARK)) {
+            // Same header, only marked with the encoding: decode it, do not treat the file as damaged.
+            lines.set(0, lines.get(0).substring(BYTE_ORDER_MARK.length()));
+        }
         if (lines.isEmpty() || !HEADER.equals(lines.get(0))) {
             throw new IllegalStateException("The history CSV header does not match the course template. "
                     + "The file was left unchanged; expected: " + HEADER);
         }
         return lines;
+    }
+
+    /** True when no history file exists yet, or it exists but is still empty (no header row). */
+    private boolean isMissingOrEmpty() throws IOException {
+        return !Files.exists(file) || Files.size(file) == 0;
     }
 
     private boolean endsWithLineBreak() throws IOException {

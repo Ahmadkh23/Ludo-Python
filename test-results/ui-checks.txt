@@ -1,3 +1,7 @@
+EduLudo - Swing interaction checks
+Date: 12/11/2026 20:27
+Command: sh verify-ui.sh
+
 PASS T1.6 partial move before block when no full move exists
 PASS T1.5/T1.7 reject double roll and invalid selection
 PASS T1.6/T1.7 enter, move, advance turn
