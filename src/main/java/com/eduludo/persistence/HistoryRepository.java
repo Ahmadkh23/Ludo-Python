@@ -1,6 +1,6 @@
 package com.eduludo.persistence;
 
-import com.eduludo.model.GameRecord;
+import com.eduludo.Model.GameRecord;
 
 import java.util.List;
 
@@ -17,3 +17,4 @@ public interface HistoryRepository {
     /** All games, newest first. */
     List<GameRecord> findAll();
 }
+

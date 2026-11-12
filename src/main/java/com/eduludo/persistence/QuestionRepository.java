@@ -1,6 +1,6 @@
 package com.eduludo.persistence;
 
-import com.eduludo.model.Question;
+import com.eduludo.Model.Question;
 
 import java.util.List;
 
@@ -11,3 +11,4 @@ public interface QuestionRepository {
 
     void saveAll(List<Question> questions);
 }
+

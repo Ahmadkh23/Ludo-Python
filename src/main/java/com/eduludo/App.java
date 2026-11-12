@@ -1,6 +1,6 @@
 package com.eduludo;
 
-import com.eduludo.controller.AppController;
+import com.eduludo.Controller.AppController;
 import com.eduludo.persistence.CsvHistoryRepository;
 import com.eduludo.persistence.DataPaths;
 import com.eduludo.persistence.EncryptedQuestionRepository;
@@ -9,11 +9,12 @@ import com.eduludo.persistence.QuestionRepository;
 import com.eduludo.security.AuthService;
 import com.eduludo.security.CryptoBox;
 import com.eduludo.service.QuestionService;
-import com.eduludo.view.Dialogs;
+import com.eduludo.View.Dialogs;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -24,6 +25,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Entry point. Wires the layers together (persistence, security, services, controllers, views) and opens the window.
@@ -37,7 +39,15 @@ public final class App {
     private App() {
     }
 
+    /** True while an error dialog is on screen, so a failure inside it cannot trigger another one. */
+    private static final AtomicBoolean showingCrashDialog = new AtomicBoolean(false);
+
     public static void main(String[] args) {
+        if (GraphicsEnvironment.isHeadless()) {
+            System.err.println("EduLudo is a desktop game and needs a graphical display.");
+            System.exit(1);
+            return;
+        }
         DataPaths paths = DataPaths.defaults();
         Thread.setDefaultUncaughtExceptionHandler((thread, error) -> reportCrash(paths, error));
         SwingUtilities.invokeLater(() -> launch(paths));
@@ -55,6 +65,7 @@ public final class App {
             System.exit(1);
             return;
         }
+        CsvHistoryRepository.seedFromCourseTemplate(paths.history());
         HistoryRepository history = new CsvHistoryRepository(paths.history());
         new AppController(questions, auth, history).show();
     }
@@ -95,7 +106,20 @@ public final class App {
             // nothing more we can do
         }
         System.err.println(sw);
-        SwingUtilities.invokeLater(() -> Dialogs.error(null, "Unexpected error: " + error
-                + "\nDetails were saved to " + logFile));
+        // Show at most one error dialog at a time. If showing it fails too (for example, no display),
+        // do not report that failure again: that would loop forever and keep growing error.log.
+        if (GraphicsEnvironment.isHeadless() || !showingCrashDialog.compareAndSet(false, true)) {
+            return;
+        }
+        SwingUtilities.invokeLater(() -> {
+            try {
+                Dialogs.error(null, "Unexpected error: " + error + "\nDetails were saved to " + logFile);
+            } catch (Throwable dialogFailure) {
+                System.err.println("Could not show the error dialog: " + dialogFailure);
+            } finally {
+                showingCrashDialog.set(false);
+            }
+        });
     }
 }
+

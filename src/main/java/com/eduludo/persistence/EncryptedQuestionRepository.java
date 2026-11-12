@@ -1,6 +1,6 @@
 package com.eduludo.persistence;
 
-import com.eduludo.model.Question;
+import com.eduludo.Model.Question;
 import com.eduludo.security.CryptoBox;
 
 import java.io.IOException;
@@ -75,3 +75,4 @@ public final class EncryptedQuestionRepository implements QuestionRepository {
         }
     }
 }
+

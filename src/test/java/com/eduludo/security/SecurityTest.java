@@ -131,3 +131,4 @@ public class SecurityTest {
         assertThrows(SecurityException.class, () -> box.decrypt("not encrypted at all"), "garbage rejected");
     }
 }
+

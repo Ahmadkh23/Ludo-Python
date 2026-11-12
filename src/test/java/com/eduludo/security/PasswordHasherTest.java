@@ -56,3 +56,4 @@ public class PasswordHasherTest {
         assertEquals("", box.decrypt(box.encrypt("")), "empty text round trips");
     }
 }
+
