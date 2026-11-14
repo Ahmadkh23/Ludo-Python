@@ -1,76 +1,548 @@
 [
-  {"id": 1, "level": "EASY", "topic": "Agile", "text": "Which document defines the four values and twelve principles of Agile software development?",
-   "options": ["The Agile Manifesto", "ISO 9001", "The Waterfall model", "The UML specification"], "correct": 0},
-  {"id": 2, "level": "EASY", "topic": "Scrum", "text": "In Scrum, who is responsible for maximizing the value of the product and managing the Product Backlog?",
-   "options": ["The Scrum Master", "The Product Owner", "The Developers", "The stakeholders"], "correct": 1},
-  {"id": 3, "level": "EASY", "topic": "Scrum", "text": "What is a Sprint in Scrum?",
-   "options": ["A bug-fixing phase after the release", "A meeting with the customer", "A time-boxed iteration of fixed length (usually 1-4 weeks)", "A kind of unit test"], "correct": 2},
-  {"id": 4, "level": "EASY", "topic": "MVC", "text": "In the MVC architecture, which component holds the data and the business logic?",
-   "options": ["The View", "The Controller", "The Model", "The Router"], "correct": 2},
-  {"id": 5, "level": "EASY", "topic": "MVC", "text": "In the MVC architecture, which component is responsible for displaying information to the user?",
-   "options": ["The Model", "The View", "The Controller", "The Database"], "correct": 1},
-  {"id": 6, "level": "EASY", "topic": "Design Patterns", "text": "Which design pattern ensures that a class has only one instance and provides a global access point to it?",
-   "options": ["Factory Method", "Observer", "Singleton", "Adapter"], "correct": 2},
-  {"id": 7, "level": "EASY", "topic": "QA", "text": "What is a unit test?",
-   "options": ["A test performed by the end users before the release", "A load test of the whole system", "A review of the requirements document", "A test that checks one small unit of code (e.g. a method) in isolation"], "correct": 3},
-  {"id": 8, "level": "EASY", "topic": "QA", "text": "What is a software defect (bug)?",
-   "options": ["A new feature request", "A difference between the actual behavior and the expected behavior", "A slow computer", "A missing comment in the code"], "correct": 1},
-  {"id": 9, "level": "EASY", "topic": "Version Control", "text": "Which Git command records the staged changes as a new snapshot in the local repository?",
-   "options": ["git push", "git commit", "git clone", "git status"], "correct": 1},
-  {"id": 10, "level": "EASY", "topic": "Agile", "text": "Which of the following is one of the values of the Agile Manifesto?",
-   "options": ["Working software over comprehensive documentation", "Processes and tools over individuals and interactions", "Following a plan over responding to change", "Contract negotiation over customer collaboration"], "correct": 0},
-  {"id": 11, "level": "EASY", "topic": "Scrum", "text": "What is the Daily Scrum?",
-   "options": ["A monthly demo for management", "A meeting where the Product Owner assigns tasks", "A code review of every commit", "A short (15-minute) daily event where the Developers inspect progress toward the Sprint Goal"], "correct": 3},
-  {"id": 12, "level": "EASY", "topic": "Software Design", "text": "What does UML stand for?",
-   "options": ["Universal Machine Language", "Unified Memory Layout", "Unified Modeling Language", "User Model Logic"], "correct": 2},
-
-  {"id": 13, "level": "MEDIUM", "topic": "Design Patterns", "text": "Which pattern defines a one-to-many dependency, so that when one object changes state all its dependents are notified automatically?",
-   "options": ["Strategy", "Observer", "Decorator", "Facade"], "correct": 1},
-  {"id": 14, "level": "MEDIUM", "topic": "Design Patterns", "text": "Which pattern lets you choose an algorithm at runtime by putting each algorithm in its own interchangeable class?",
-   "options": ["Strategy", "Singleton", "Composite", "Builder"], "correct": 0},
-  {"id": 15, "level": "MEDIUM", "topic": "Design Patterns", "text": "What is the main purpose of the Factory Method pattern?",
-   "options": ["To make sure only one object exists", "To notify objects about changes", "To let a creator method or subclass decide which concrete class to create, instead of calling 'new' directly", "To add behavior to objects at runtime"], "correct": 2},
-  {"id": 16, "level": "MEDIUM", "topic": "Software Design", "text": "What does the 'S' in the SOLID principles stand for?",
-   "options": ["Substitution Principle", "Separation of Layers", "Static Typing Principle", "Single Responsibility Principle"], "correct": 3},
-  {"id": 17, "level": "MEDIUM", "topic": "QA", "text": "What is the difference between black-box and white-box testing?",
-   "options": ["Black-box is manual, white-box is automatic", "Black-box tests behavior without looking at the code; white-box tests are designed using knowledge of the internal code", "Black-box tests the UI only, white-box tests the database only", "There is no difference"], "correct": 1},
-  {"id": 18, "level": "MEDIUM", "topic": "QA", "text": "Why do we perform regression testing?",
-   "options": ["To make sure new changes did not break functionality that worked before", "To measure the speed of the system", "To test the system for the first time", "To check the spelling in the user interface"], "correct": 0},
-  {"id": 19, "level": "MEDIUM", "topic": "Scrum", "text": "What is the purpose of the Sprint Retrospective?",
-   "options": ["To present the increment to the stakeholders", "To estimate the Product Backlog", "To inspect how the last Sprint went and plan improvements to the team's way of working", "To write the release notes"], "correct": 2},
-  {"id": 20, "level": "MEDIUM", "topic": "Agile", "text": "Which template is commonly used to write a User Story?",
-   "options": ["Given / When / Then", "As a <role>, I want <goal>, so that <benefit>", "Input / Process / Output", "Problem / Cause / Solution"], "correct": 1},
-  {"id": 21, "level": "MEDIUM", "topic": "QA", "text": "What is equivalence partitioning?",
-   "options": ["Splitting the team into equal groups", "Testing every possible input value", "Running the same test on two computers", "Dividing input values into groups expected to behave the same, and testing one value from each group"], "correct": 3},
-  {"id": 22, "level": "MEDIUM", "topic": "MVC", "text": "In MVC, what is the main role of the Controller?",
-   "options": ["To handle user input, update the Model and choose which View to show", "To store the data permanently", "To draw the screen", "To compile the code"], "correct": 0},
-  {"id": 23, "level": "MEDIUM", "topic": "Software Design", "text": "What do 'high cohesion' and 'low coupling' mean?",
-   "options": ["Many classes that depend heavily on each other", "One big class that does everything", "Each module focuses on one task and depends as little as possible on other modules", "Copying code between modules to avoid dependencies"], "correct": 2},
-  {"id": 24, "level": "MEDIUM", "topic": "Version Control", "text": "What is a merge conflict in Git?",
-   "options": ["Two developers using the same computer", "Git cannot combine changes automatically because the same lines were changed differently on two branches", "A branch that was deleted", "A commit without a message"], "correct": 1},
-
-  {"id": 25, "level": "HARD", "topic": "Design Patterns", "text": "Which pattern converts the interface of an existing class into another interface that clients expect?",
-   "options": ["Adapter", "Bridge", "Proxy", "Facade"], "correct": 0},
-  {"id": 26, "level": "HARD", "topic": "Design Patterns", "text": "What is the main advantage of the Decorator pattern over subclassing?",
-   "options": ["It makes the code run faster", "It removes the need for interfaces", "It guarantees a single instance", "It adds responsibilities to individual objects dynamically at runtime, without changing their class"], "correct": 3},
-  {"id": 27, "level": "HARD", "topic": "Design Patterns", "text": "Which pattern is best suited for supporting undo and redo of user actions?",
-   "options": ["Observer", "Command", "Singleton", "Prototype"], "correct": 1},
-  {"id": 28, "level": "HARD", "topic": "Software Design", "text": "What does the Liskov Substitution Principle state?",
-   "options": ["A class should have only one reason to change", "Classes should be open for extension and closed for modification", "Objects of a subclass must be usable wherever the base class is expected, without breaking correctness", "Clients should not depend on methods they do not use"], "correct": 2},
-  {"id": 29, "level": "HARD", "topic": "Software Design", "text": "According to the Dependency Inversion Principle, high-level modules should...",
-   "options": ["depend on abstractions, not on concrete low-level modules", "depend directly on low-level modules for speed", "never use interfaces", "be merged with low-level modules"], "correct": 0},
-  {"id": 30, "level": "HARD", "topic": "QA", "text": "A field accepts whole numbers from 1 to 100. Using boundary value analysis, which values should be tested first?",
-   "options": ["50 only", "0, 1, 100 and 101", "1 and 50", "Random values between 1 and 100"], "correct": 1},
-  {"id": 31, "level": "HARD", "topic": "QA", "text": "What does 100% statement coverage guarantee?",
-   "options": ["That the code has no bugs", "That every possible path through the code was tested", "That all requirements are met", "That every statement was executed at least once by the tests (but not that the code is bug-free)"], "correct": 3},
-  {"id": 32, "level": "HARD", "topic": "QA", "text": "What is the correct cycle in Test-Driven Development (TDD)?",
-   "options": ["Write code, then write tests, then deploy", "Refactor, then write tests, then write code", "Red (write a failing test), Green (make it pass), Refactor", "Write all the tests at the end of the project"], "correct": 2},
-  {"id": 33, "level": "HARD", "topic": "Scrum", "text": "What is the Definition of Done in Scrum?",
-   "options": ["A formal description of the quality measures an Increment must meet to be considered complete", "The date when the project ends", "The list of all bugs found in the Sprint", "The Product Owner's personal checklist"], "correct": 0},
-  {"id": 34, "level": "HARD", "topic": "Agile", "text": "What does velocity measure in an Agile team?",
-   "options": ["How fast the code runs", "The amount of work (e.g. story points) the team completes per iteration", "The number of team members", "The number of bugs per release"], "correct": 1},
-  {"id": 35, "level": "HARD", "topic": "QA", "text": "What is the difference between verification and validation?",
-   "options": ["They mean the same thing", "Verification is done by users, validation by developers", "Verification: are we building the product right? Validation: are we building the right product?", "Verification is testing, validation is debugging"], "correct": 2},
-  {"id": 36, "level": "HARD", "topic": "Software Design", "text": "Which UML diagram best shows the order of messages exchanged between objects over time?",
-   "options": ["Class diagram", "Use-case diagram", "Deployment diagram", "Sequence diagram"], "correct": 3}
+  {
+    "id": 1,
+    "level": "EASY",
+    "topic": "Agile",
+    "text": "Which document defines the four values and twelve principles of Agile software development?",
+    "options": [
+      "The Agile Manifesto",
+      "ISO 9001",
+      "The Waterfall model",
+      "The UML specification"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 2,
+    "level": "EASY",
+    "topic": "Scrum",
+    "text": "In Scrum, who is responsible for maximizing the value of the product and managing the Product Backlog?",
+    "options": [
+      "The Scrum Master",
+      "The Product Owner",
+      "The Developers",
+      "The stakeholders"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 3,
+    "level": "EASY",
+    "topic": "Scrum",
+    "text": "What is a Sprint in Scrum?",
+    "options": [
+      "A bug-fixing phase after the release",
+      "A meeting with the customer",
+      "A time-boxed iteration of fixed length (usually 1-4 weeks)",
+      "A kind of unit test"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 4,
+    "level": "EASY",
+    "topic": "MVC",
+    "text": "In the MVC architecture, which component holds the data and the business logic?",
+    "options": [
+      "The View",
+      "The Controller",
+      "The Model",
+      "The Router"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 5,
+    "level": "EASY",
+    "topic": "MVC",
+    "text": "In the MVC architecture, which component is responsible for displaying information to the user?",
+    "options": [
+      "The Model",
+      "The View",
+      "The Controller",
+      "The Database"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "level": "EASY",
+    "topic": "Design Patterns",
+    "text": "Which design pattern ensures that a class has only one instance and provides a global access point to it?",
+    "options": [
+      "Factory Method",
+      "Observer",
+      "Singleton",
+      "Adapter"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 7,
+    "level": "EASY",
+    "topic": "QA",
+    "text": "What is a unit test?",
+    "options": [
+      "A test performed by the end users before the release",
+      "A load test of the whole system",
+      "A review of the requirements document",
+      "A test that checks one small unit of code (e.g. a method) in isolation"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 8,
+    "level": "EASY",
+    "topic": "QA",
+    "text": "What is a software defect (bug)?",
+    "options": [
+      "A new feature request",
+      "A difference between the actual behavior and the expected behavior",
+      "A slow computer",
+      "A missing comment in the code"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "level": "EASY",
+    "topic": "Version Control",
+    "text": "Which Git command records the staged changes as a new snapshot in the local repository?",
+    "options": [
+      "git push",
+      "git commit",
+      "git clone",
+      "git status"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "level": "EASY",
+    "topic": "Agile",
+    "text": "Which of the following is one of the values of the Agile Manifesto?",
+    "options": [
+      "Working software over comprehensive documentation",
+      "Processes and tools over individuals and interactions",
+      "Following a plan over responding to change",
+      "Contract negotiation over customer collaboration"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 11,
+    "level": "EASY",
+    "topic": "Scrum",
+    "text": "What is the Daily Scrum?",
+    "options": [
+      "A monthly demo for management",
+      "A meeting where the Product Owner assigns tasks",
+      "A code review of every commit",
+      "A short (15-minute) daily event where the Developers inspect progress toward the Sprint Goal"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 12,
+    "level": "EASY",
+    "topic": "Software Design",
+    "text": "What does UML stand for?",
+    "options": [
+      "Universal Machine Language",
+      "Unified Memory Layout",
+      "Unified Modeling Language",
+      "User Model Logic"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 13,
+    "level": "MEDIUM",
+    "topic": "Design Patterns",
+    "text": "Which pattern defines a one-to-many dependency, so that when one object changes state all its dependents are notified automatically?",
+    "options": [
+      "Strategy",
+      "Observer",
+      "Decorator",
+      "Facade"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 14,
+    "level": "MEDIUM",
+    "topic": "Design Patterns",
+    "text": "Which pattern lets you choose an algorithm at runtime by putting each algorithm in its own interchangeable class?",
+    "options": [
+      "Strategy",
+      "Singleton",
+      "Composite",
+      "Builder"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 15,
+    "level": "MEDIUM",
+    "topic": "Design Patterns",
+    "text": "What is the main purpose of the Factory Method pattern?",
+    "options": [
+      "To make sure only one object exists",
+      "To notify objects about changes",
+      "To let a creator method or subclass decide which concrete class to create, instead of calling 'new' directly",
+      "To add behavior to objects at runtime"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 16,
+    "level": "MEDIUM",
+    "topic": "Software Design",
+    "text": "What does the 'S' in the SOLID principles stand for?",
+    "options": [
+      "Substitution Principle",
+      "Separation of Layers",
+      "Static Typing Principle",
+      "Single Responsibility Principle"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 17,
+    "level": "MEDIUM",
+    "topic": "QA",
+    "text": "What is the difference between black-box and white-box testing?",
+    "options": [
+      "Black-box is manual, white-box is automatic",
+      "Black-box tests behavior without looking at the code; white-box tests are designed using knowledge of the internal code",
+      "Black-box tests the UI only, white-box tests the database only",
+      "There is no difference"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 18,
+    "level": "MEDIUM",
+    "topic": "QA",
+    "text": "Why do we perform regression testing?",
+    "options": [
+      "To make sure new changes did not break functionality that worked before",
+      "To measure the speed of the system",
+      "To test the system for the first time",
+      "To check the spelling in the user interface"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 19,
+    "level": "MEDIUM",
+    "topic": "Scrum",
+    "text": "What is the purpose of the Sprint Retrospective?",
+    "options": [
+      "To present the increment to the stakeholders",
+      "To estimate the Product Backlog",
+      "To inspect how the last Sprint went and plan improvements to the team's way of working",
+      "To write the release notes"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 20,
+    "level": "MEDIUM",
+    "topic": "Agile",
+    "text": "Which template is commonly used to write a User Story?",
+    "options": [
+      "Given / When / Then",
+      "As a <role>, I want <goal>, so that <benefit>",
+      "Input / Process / Output",
+      "Problem / Cause / Solution"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "level": "MEDIUM",
+    "topic": "QA",
+    "text": "What is equivalence partitioning?",
+    "options": [
+      "Splitting the team into equal groups",
+      "Testing every possible input value",
+      "Running the same test on two computers",
+      "Dividing input values into groups expected to behave the same, and testing one value from each group"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 22,
+    "level": "MEDIUM",
+    "topic": "MVC",
+    "text": "In MVC, what is the main role of the Controller?",
+    "options": [
+      "To handle user input, update the Model and choose which View to show",
+      "To store the data permanently",
+      "To draw the screen",
+      "To compile the code"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 23,
+    "level": "MEDIUM",
+    "topic": "Software Design",
+    "text": "What do 'high cohesion' and 'low coupling' mean?",
+    "options": [
+      "Many classes that depend heavily on each other",
+      "One big class that does everything",
+      "Each module focuses on one task and depends as little as possible on other modules",
+      "Copying code between modules to avoid dependencies"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 24,
+    "level": "MEDIUM",
+    "topic": "Version Control",
+    "text": "What is a merge conflict in Git?",
+    "options": [
+      "Two developers using the same computer",
+      "Git cannot combine changes automatically because the same lines were changed differently on two branches",
+      "A branch that was deleted",
+      "A commit without a message"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "level": "HARD",
+    "topic": "Design Patterns",
+    "text": "Which pattern converts the interface of an existing class into another interface that clients expect?",
+    "options": [
+      "Adapter",
+      "Bridge",
+      "Proxy",
+      "Facade"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 26,
+    "level": "HARD",
+    "topic": "Design Patterns",
+    "text": "What is the main advantage of the Decorator pattern over subclassing?",
+    "options": [
+      "It makes the code run faster",
+      "It removes the need for interfaces",
+      "It guarantees a single instance",
+      "It adds responsibilities to individual objects dynamically at runtime, without changing their class"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 27,
+    "level": "HARD",
+    "topic": "Design Patterns",
+    "text": "Which pattern is best suited for supporting undo and redo of user actions?",
+    "options": [
+      "Observer",
+      "Command",
+      "Singleton",
+      "Prototype"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 28,
+    "level": "HARD",
+    "topic": "Software Design",
+    "text": "What does the Liskov Substitution Principle state?",
+    "options": [
+      "A class should have only one reason to change",
+      "Classes should be open for extension and closed for modification",
+      "Objects of a subclass must be usable wherever the base class is expected, without breaking correctness",
+      "Clients should not depend on methods they do not use"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 29,
+    "level": "HARD",
+    "topic": "Software Design",
+    "text": "According to the Dependency Inversion Principle, high-level modules should...",
+    "options": [
+      "depend on abstractions, not on concrete low-level modules",
+      "depend directly on low-level modules for speed",
+      "never use interfaces",
+      "be merged with low-level modules"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 30,
+    "level": "HARD",
+    "topic": "QA",
+    "text": "A field accepts whole numbers from 1 to 100. Using boundary value analysis, which values should be tested first?",
+    "options": [
+      "50 only",
+      "0, 1, 100 and 101",
+      "1 and 50",
+      "Random values between 1 and 100"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 31,
+    "level": "HARD",
+    "topic": "QA",
+    "text": "What does 100% statement coverage guarantee?",
+    "options": [
+      "That the code has no bugs",
+      "That every possible path through the code was tested",
+      "That all requirements are met",
+      "That every statement was executed at least once by the tests (but not that the code is bug-free)"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 32,
+    "level": "HARD",
+    "topic": "QA",
+    "text": "What is the correct cycle in Test-Driven Development (TDD)?",
+    "options": [
+      "Write code, then write tests, then deploy",
+      "Refactor, then write tests, then write code",
+      "Red (write a failing test), Green (make it pass), Refactor",
+      "Write all the tests at the end of the project"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "level": "HARD",
+    "topic": "Scrum",
+    "text": "What is the Definition of Done in Scrum?",
+    "options": [
+      "A formal description of the quality measures an Increment must meet to be considered complete",
+      "The date when the project ends",
+      "The list of all bugs found in the Sprint",
+      "The Product Owner's personal checklist"
+    ],
+    "correct": 0
+  },
+  {
+    "id": 34,
+    "level": "HARD",
+    "topic": "Agile",
+    "text": "What does velocity measure in an Agile team?",
+    "options": [
+      "How fast the code runs",
+      "The amount of work (e.g. story points) the team completes per iteration",
+      "The number of team members",
+      "The number of bugs per release"
+    ],
+    "correct": 1
+  },
+  {
+    "id": 35,
+    "level": "HARD",
+    "topic": "QA",
+    "text": "What is the difference between verification and validation?",
+    "options": [
+      "They mean the same thing",
+      "Verification is done by users, validation by developers",
+      "Verification: are we building the product right? Validation: are we building the right product?",
+      "Verification is testing, validation is debugging"
+    ],
+    "correct": 2
+  },
+  {
+    "id": 36,
+    "level": "HARD",
+    "topic": "Software Design",
+    "text": "Which UML diagram best shows the order of messages exchanged between objects over time?",
+    "options": [
+      "Class diagram",
+      "Use-case diagram",
+      "Deployment diagram",
+      "Sequence diagram"
+    ],
+    "correct": 3
+  },
+  {
+    "id": 37,
+    "level": "EASY",
+    "topic": "MVC architecture",
+    "text": "A team wants to replace a desktop interface without rewriting its game rules. Which MVC decision best supports this, and what is the trade-off?",
+    "options": [
+      "Keep rules in the Model and coordinate through Controllers; this improves separation but adds interfaces and coordination.",
+      "Put the rules in the View's event handlers so screens and rules change together; this cuts the number of classes but ties the rules to one interface.",
+      "Let the View read and write the Model's fields directly; this keeps the Model free of interface code but makes the Controller redundant.",
+      "Keep the game state in the Controller so the View and Model stay small; this simplifies testing but makes the state depend on the interface toolkit."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 38,
+    "level": "MEDIUM",
+    "topic": "Layered / N-tier architecture",
+    "text": "A system separates presentation, business logic, and storage into tiers. Which statement correctly describes a benefit and a cost?",
+    "options": [
+      "Each logical layer must be deployed on its own server; this improves scalability but makes local development harder.",
+      "Each layer owns one responsibility; this improves maintainability but calls between physical tiers can add latency.",
+      "Strict layering lets any layer call any other layer directly; this improves performance but weakens separation.",
+      "Separate tiers remove the need for shared data contracts; this speeds up development but increases memory use."
+    ],
+    "correct": 1
+  },
+  {
+    "id": 39,
+    "level": "HARD",
+    "topic": "Microservices architecture",
+    "text": "An application has independently changing business capabilities. Which trade-off best describes organizing them as microservices?",
+    "options": [
+      "All services share one database so data stays consistent; this simplifies deployment but limits the choice of programming language.",
+      "Each class becomes its own service; this improves cohesion but increases the build time of the single deployable.",
+      "Each capability is deployed as its own service; this allows separate releases but makes monitoring and data consistency harder.",
+      "All services are released together as one version; this keeps interfaces aligned but requires a service registry."
+    ],
+    "correct": 2
+  },
+  {
+    "id": 40,
+    "level": "MEDIUM",
+    "topic": "Event-driven architecture",
+    "text": "A game-result service publishes events used by several independent consumers. Which trade-off is most accurate?",
+    "options": [
+      "The publisher waits for every consumer to finish; this keeps results in order but couples the publisher to the slowest consumer.",
+      "Consumers call the publisher's API to fetch results; this keeps one source of truth but the publisher must know each consumer.",
+      "Events replace the need to store messages; this lowers infrastructure cost but makes adding new consumers harder.",
+      "The publisher does not know its consumers; this keeps them loosely coupled but ordering and duplicates need deliberate design."
+    ],
+    "correct": 3
+  },
+  {
+    "id": 41,
+    "level": "HARD",
+    "topic": "Hexagonal architecture",
+    "text": "A system must run with a real database, an in-memory test store, and different interfaces. What is the main benefit and cost of ports-and-adapters architecture?",
+    "options": [
+      "The core uses the outside only through ports and adapters; this allows testing without real infrastructure but adds interfaces.",
+      "The core calls database and UI libraries directly through shared utility classes; this reduces boilerplate but makes tests slower.",
+      "Adapters hold the business rules so the core stays small; this simplifies the domain but repeats logic in every adapter.",
+      "Ports are network endpoints for remote services; this enables distribution but means the application must run online."
+    ],
+    "correct": 0
+  },
+  {
+    "id": 42,
+    "level": "MEDIUM",
+    "topic": "Pipes-and-filters architecture",
+    "text": "A data-processing application validates, transforms, and exports records. Which benefit and limitation fit a pipes-and-filters architecture?",
+    "options": [
+      "Filters share one global data store so stages can be reordered freely; this simplifies contracts but limits parallel execution.",
+      "Filters are independent stages joined by pipes; this allows reusing stages but needs compatible data formats between them.",
+      "Each filter calls the next filter's methods directly; this avoids buffering but makes individual stages harder to replace.",
+      "The whole pipeline runs on a single thread; this makes ordering predictable but prevents stages from being reused."
+    ],
+    "correct": 1
+  }
 ]

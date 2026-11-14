@@ -37,7 +37,7 @@ Tests are in `src/test/java` and run on every build (`build.bat`); the JAR is no
 | # | Requirement | Implementation | Test |
 |---|---|---|---|
 | Q1 | Multiple choice, 4 answers | `Question` record validation | `invalidQuestionsAreRejected` |
-| Q2 | At least 30 questions over 3 levels, from the course material | `questions-default.json` (36: 12 per level; Agile, Scrum, MVC, Design Patterns, QA, SW design, Git) | `theDefaultQuestionBankIsValidAndLargeEnough` |
+| Q2 | At least 30 questions over 3 levels, from the course material | `questions-default.json` (42: 13 easy / 15 medium / 14 hard; Agile, Scrum, MVC, Design Patterns, QA, SW design, Git, plus the six architecture questions of `questions_python.xlsx`, IDs 37-42) | `theDefaultQuestionBankIsValidAndLargeEnough` |
 | Q3 | Right answer +1/+2/+3, wrong answer −1/−2/−3 by level | `Game.answer`, `QuestionLevel.steps` | `aCorrectAnswerMovesForwardByTheQuestionLevel`, `aWrongAnswerMovesBackByTheQuestionLevel`, `aWrongAnswerNeverMovesBehindTheStartSquare`, `aCorrectAnswerStopsAtTheFinish`, `aCorrectAnswerStopsBeforeAnOpponentBlock` |
 
 ## Game rules
@@ -54,14 +54,14 @@ Tests are in `src/test/java` and run on every build (`build.bat`); the JAR is no
 
 | # | Requirement | Implementation |
 |---|---|---|
-| F1 | Start screen: start a game, game history, restricted question manager | `view/StartPanel` |
-| F2.1 | Choose the number of players and the level | `view/SetupPanel` |
-| F2.2 | Name and unique colour per player | `view/SetupPanel` (+ `Game.Builder` validation) |
-| F2.3 | Board screen shows the time, the player whose turn it is, the dice (with function), the board | `view/GamePanel`, `BoardCanvas`, `DiceView` |
-| F2.4 | Play from start to finish with questions, surprises and safe squares | `controller/GameController` |
+| F1 | Start screen: start a game, game history, restricted question manager | `View/StartPanel` |
+| F2.1 | Choose the number of players and the level | `View/SetupPanel` |
+| F2.2 | Name and unique colour per player | `View/SetupPanel` (+ `Game.Builder` validation) |
+| F2.3 | Board screen shows the time, the player whose turn it is, the dice (with function), the board | `View/GamePanel`, `BoardCanvas`, `DiceView` |
+| F2.4 | Play from start to finish with questions, surprises and safe squares | `Controller/GameController` |
 | F2.5 | At the end the game is saved with the winners order, time and level | `GameController.finish` → `HistoryRepository.save` (`historyIsSavedAndReadBackNewestFirst`) |
-| F3 | Game history screen | `view/HistoryPanel` (with level filter and average time) |
-| F4 | Question manager: view, edit, add, delete | `view/AdminPanel`, `QuestionEditorDialog`, `controller/AdminController` (`adminCanAddEditAndDelete`) |
+| F3 | Game history screen | `View/HistoryPanel` (with level filter and average time) |
+| F4 | Question manager: view, edit, add, delete | `View/AdminPanel`, `QuestionEditorDialog`, `Controller/AdminController` (`adminCanAddEditAndDelete`) |
 | F4.1 | Security: protected from players, choice justified and implemented in code | [SECURITY.md](../SECURITY.md), `security/*`, `QuestionService` (`SecurityTest`, `adminOperationsNeedAValidSession`) |
 
 ## Data and non-functional requirements
@@ -70,18 +70,18 @@ Tests are in `src/test/java` and run on every build (`build.bat`); the JAR is no
 |---|---|---|
 | D1 | Organised classes and data structures for history, profiles and questions | `GameRecord`, `Player`, `Question`, repositories – see [ARCHITECTURE.md](ARCHITECTURE.md) |
 | D2 | Security of sensitive data (questions and answers) at the data level | AES-GCM encrypted bank + session check in `QuestionService` |
-| D3 | History in a fixed schema published by the course | `HistoryRepository` interface; the course schema = one new implementation, nothing else changes. **Waiting for the schema.** |
+| D3 | History in a fixed schema published by the course | Implemented. `CsvHistoryRepository` writes the lecturer's eight columns exactly, and the lecturer's CSV is bundled in the JAR and copied to `history.csv` on first run (`seedFromCourseTemplate`). A file that does not match the course header is reported and left untouched. See `data/lecturer-history-template.csv`. |
 | N1 | Java | Java 17+ (built with `--release 17`) |
 | N2 | Runnable file in every submission, works on more than one computer | `dist/EduLudo.jar` (any OS with Java 17+) and `dist/EduLudo/EduLudo.exe` (Java bundled); no external libraries |
-| N3 | MVC architecture | `model` / `view` / `controller` packages |
+| N3 | MVC architecture | `Model` / `View` / `Controller` packages, as named in the assignment. The View declares `Actions` interfaces that the controllers implement, so the View does not depend on the Controller. |
 | N4 | Design patterns | Factory, Builder, Strategy (×2), State, Observer, Repository, Protection Proxy – see ARCHITECTURE.md |
 | N5 | Clear documentation | Javadoc on every class, README, ARCHITECTURE, SECURITY, this file |
-| N6 | Edge cases tested | 63 automated tests (blocks, exact finish, third six, ×0 multiplier, question limits, tampered files, lockout…) |
+| N6 | Edge cases tested | 136 automated tests plus 9 Swing interaction checks (blocks, exact finish, third six, ×0 multiplier, question limits, tampered files, lockout, CSV written by Excel…) |
 | N7 | GitHub, all members weekly | see [TEAM_PLAN.md](TEAM_PLAN.md) |
 
 ## Bonus features (beyond the requirements)
 
-- Computer players with a move-scoring strategy (`model/ai/ComputerPlayer`)
+- Computer players with a move-scoring strategy (`Model/ai/ComputerPlayer`)
 - Animated piece movement and dice; highlighted legal pieces; tooltips on every square
 - Colour-coded game log; rules screen in the game; "Play again" with the same setup
 - History filter by level and average game time; question search and filter in the admin wizard
@@ -93,7 +93,7 @@ Tests are in `src/test/java` and run on every build (`build.bat`); the JAR is no
 | Point in the PDF | Our interpretation |
 |---|---|
 | Surprise "choose an opponent, roll, move one piece by half the roll" | The player chooses an opponent's piece; a normal die is rolled; that piece moves **back** ⌊roll/2⌋ squares (a surprise that helps the lander). |
-| Movement after a question or a surprise ("+3", "back 3") | Not a dice move: it doesn't capture and doesn't trigger another square; it stops before an opponent Double Block, never goes behind the start square or past the finish. |
+| Movement after a question or a surprise ("+3", "back 3") | Following the course clarification (ANSWERS.xlsx): the piece **does** capture and **does** trigger the square it lands on, so effects can chain. It stops before an opponent Double Block, never goes behind the start square or past the finish. A piece pushed back by the Sabotage surprise is the one exception: it can still capture, but its new square is not triggered, because it is not its owner's turn. |
 | Several single opponent pieces of different colours on the landing square | All of them are captured (each is "a single piece of another player"). |
 | Turn order | Clockwise seating: Red, Green, Yellow, Blue (only the colours in the game). |
 | Exact board drawings (start and arrow positions) | Taken from the description: Easy start = classic start square; Medium/Hard start = outer corner next to the castle; arrows = the end of each lap. If the official images differ, only `BoardFactory` changes. |

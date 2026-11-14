@@ -4,15 +4,15 @@
 
 ```mermaid
 flowchart LR
-    subgraph View["View (com.eduludo.view)"]
+    subgraph View["View (com.eduludo.View)"]
         SP[StartPanel] --- SetP[SetupPanel] --- GP[GamePanel + BoardCanvas + DiceView]
         HP[HistoryPanel] --- AP[AdminPanel] --- DLG[QuestionDialog, LoginDialog, ...]
     end
-    subgraph Controller["Controller (com.eduludo.controller)"]
+    subgraph Controller["Controller (com.eduludo.Controller)"]
         AC[AppController] --> GC[GameController]
         AC --> ADC[AdminController]
     end
-    subgraph Model["Model (com.eduludo.model)"]
+    subgraph Model["Model (com.eduludo.Model)"]
         G[Game] --> B[Board]
         G --> PL[Player / Piece]
         G --> D[DiceStrategy]
@@ -35,23 +35,23 @@ flowchart LR
 
 | Layer | Responsibility | Depends on |
 |---|---|---|
-| **Model** (`model`) | Board geometry, all game rules, turn state machine, computer decisions. No Swing code. | nothing (pure Java) |
-| **View** (`view`) | Drawing and input. Each screen exposes an `Actions` interface for its user actions. Reads the model to draw. | model (read only) |
-| **Controller** (`controller`) | Receives user actions, calls the model, plays the computer seats, switches screens, saves history. | model, view, services |
+| **Model** (`Model`) | Board geometry, all game rules, turn state machine, computer decisions. No Swing code. | nothing (pure Java) |
+| **View** (`View`) | Drawing and input. Each screen exposes an `Actions` interface for its user actions. Reads the model to draw. | model (read only) |
+| **Controller** (`Controller`) | Receives user actions, calls the model, plays the computer seats, switches screens, saves history. | model, view, services |
 | **Service / security / persistence** | Question access rules, admin login, encryption, files. | model records |
 
-The model is fully tested without a UI (63 automated tests). The views never change the model directly.
+The model is fully tested without a UI (136 automated tests and 9 Swing interaction checks). The views never change the model directly.
 
 ## 2. Design patterns
 
 | Pattern | Where | Why |
 |---|---|---|
 | **Model–View–Controller** | the packages above | separates rules, drawing and flow; the rules can be tested without a window |
-| **Factory** | `model/BoardFactory` | builds the EASY / MEDIUM / HARD board (geometry, fixed squares, random squares) in one place |
+| **Factory** | `Model/BoardFactory` | builds the EASY / MEDIUM / HARD board (geometry, fixed squares, random squares) in one place |
 | **Builder** | `Game.Builder` | creates a game step by step and validates the setup (2–4 players, unique colours and names) before the object exists |
-| **Strategy** | `model/dice/DiceStrategy` → `NormalDice`, `BoostDice`, `UltraBoostDice` | the engine rolls "a die" without knowing which; tests plug in a scripted die |
-| **Strategy** | `model/Surprise` (each constant has its own `apply`) | each surprise effect is a separate algorithm with its own probability |
-| **State** | `model/Phase` + `Game.requirePhase` | each action is only legal in one phase (roll → choose → answer…); illegal calls throw |
+| **Strategy** | `Model/dice/DiceStrategy` → `NormalDice`, `BoostDice`, `UltraBoostDice` | the engine rolls "a die" without knowing which; tests plug in a scripted die |
+| **Strategy** | `Model/Surprise` (each constant has its own `apply`) | each surprise effect is a separate algorithm with its own probability |
+| **State** | `Model/Phase` + `Game.requirePhase` | each action is only legal in one phase (roll → choose → answer…); illegal calls throw |
 | **Observer** | `GameListener` / `GameEvent` | the model announces what happened; the controller updates the log, dice and board |
 | **Repository / DAO** | `QuestionRepository`, `HistoryRepository` | storage is hidden behind interfaces; the course's history schema can be plugged in by adding one class |
 | **Protection Proxy / Facade** | `service/QuestionService` | the only gateway to the bank; checks the admin session before any sensitive operation |

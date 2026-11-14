@@ -1,0 +1,75 @@
+EduLudo - second-computer verification
+=======================================
+Date:     08/11/2026 16:46
+Machine:  MacBook (Apple Silicon, arm64), macOS 26.6.2 (build 25G83)
+Java:     OpenJDK 21.0.7 (Temurin-21.0.7+6) - the first build machine used JDK 25
+Package:  iteration1_python.zip extracted into a new, empty folder
+
+1. Clean build from the extracted ZIP (sh build.sh)
+   - Compiled with --release 17; class files are version 61 (Java 17).
+   - Automated tests: 131 run, 131 passed, 0 failed.
+
+2. Offscreen Swing interaction checks (sh verify-ui.sh)
+   - 8 passed, 0 failed (menu, setup validation/handoff/back, roll, piece
+     selection, turn advance, view refresh, controller integration).
+
+3. Submitted JAR (dist/EduLudo.jar)
+   - Bytecode compared with the fresh build: identical apart from
+     compiler-generated lambda names (different JDK versions).
+   - Launched with: java -Deduludo.data=<new folder> -jar dist/EduLudo.jar
+   - Native window opened; main menu rendered (question bank: 42 questions,
+     easy 13 / medium 15 / hard 14); questions.dat created in the data folder.
+   - "Start a new game" opened the setup screen (4 players, Easy default).
+   - Screenshots: test-results/ui/computer2-native-menu.jpg,
+                  test-results/ui/computer2-native-setup.jpg
+   - No application errors. Console output contained only JDK macOS
+     accessibility-bridge messages (java.awt.IllegalComponentStateException
+     from JTableHeader accessibility) caused by the screen-automation tool
+     querying hidden panels; no com.eduludo frames.
+
+Result: PASS
+
+Re-verification after defect fixes (08/11/2026 17:41, same machine)
+--------------------------------------------------------------------
+Fixed: crash-reporter loop (App.java) and clipped long answers in the
+question dialog (QuestionDialog.java). Rebuilt dist/EduLudo.jar.
+   - Build: 131/131 tests passed; verify-ui.sh 8/8 passed.
+   - Native launch with a fresh data folder: window opened, no errors.
+   - Headless launch: prints "EduLudo is a desktop game and needs a
+     graphical display." and exits with code 1; nothing written.
+Result: PASS
+
+Re-verification after review round 2 (08/11/2026 17:59, same machine)
+---------------------------------------------------------------------
+Fixed: "Sabotage" surprise no longer triggers the pushed piece's new square
+(Game.java); new regression test aPieceMovedBackBySabotageDoesNotTriggerItsNewSquare
+(fails without the fix, passes with it). Rebuilt dist/EduLudo.jar.
+   - Build: 132/132 tests passed; verify-ui.sh 8/8 passed (logs refreshed).
+   - Native launch with a fresh data folder: window opened, no errors.
+   - Headless launch: message + exit code 1; nothing written.
+Result: PASS
+
+Re-verification after review round 3 (08/11/2026 23:00, same machine)
+---------------------------------------------------------------------
+Changes: history.csv is created on first run as a copy of the lecturer's
+CSV bundled in the JAR; new tests for that and for a pushed piece still
+capturing; test files reformatted; one stronger UI check (turn passes to Bob).
+   - Build: 134/134 tests passed; verify-ui.sh 9/9 passed (logs refreshed).
+   - Native launch with a fresh data folder: window opened, no errors;
+     history.csv created and byte-identical to data/lecturer-history-template.csv.
+   - Headless launch: message + exit code 1; nothing written.
+Result: PASS
+
+Re-verification after review round 4 (09/11/2026 11:05, same machine)
+---------------------------------------------------------------------
+Changes: game durations shown as HH:MM:SS everywhere (as in the CSV);
+correct answers of questions 38-42 reworded in the same style as the
+wrong answers; verify-ui.bat added; report screenshots re-created.
+   - Build: 134/134 tests passed; verify-ui.sh 9/9 passed (logs refreshed).
+   - Native launch with a fresh data folder: application started with no
+     errors; questions.dat created; history.csv created and byte-identical
+     to data/lecturer-history-template.csv.
+   - Headless launch: message + exit code 1; nothing written.
+   - Note: this final JAR was built on this (second) computer. Running it
+     on another team computer is part of the team walkthrough.
+Result: PASS

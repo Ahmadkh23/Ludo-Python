@@ -25,8 +25,9 @@ find src/test/java -name "*.java" | sed 's/.*/"&"/' > build/test-sources.txt
 javac --release 17 -encoding UTF-8 -Xlint:all -cp build/classes -d build/test-classes @build/test-sources.txt
 
 echo "=== Running tests"
-java -cp "build/classes${SEP}build/test-classes" com.eduludo.testing.TestRunner --scan build/test-classes
+java -Djava.awt.headless=true -cp "build/classes${SEP}build/test-classes" com.eduludo.testing.TestRunner --scan build/test-classes
 
 echo "=== Creating dist/EduLudo.jar"
 jar --create --file dist/EduLudo.jar --main-class com.eduludo.App -C build/classes .
 echo "Done: dist/EduLudo.jar  (run with: java -jar dist/EduLudo.jar)"
+

@@ -1,7 +1,7 @@
 package com.eduludo.persistence;
 
-import com.eduludo.model.Question;
-import com.eduludo.model.QuestionLevel;
+import com.eduludo.Model.Question;
+import com.eduludo.Model.QuestionLevel;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -57,3 +57,4 @@ public final class QuestionJson {
         return result;
     }
 }
+

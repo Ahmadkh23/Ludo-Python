@@ -1,0 +1,159 @@
+EduLudo - automated test run
+Date: 12/11/2026 20:27
+Machine: Darwin 27.2.0 arm64, openjdk version "21.0.7" 2025-04-15 LTS
+Command: sh build.sh
+
+BoardFactoryTest
+  PASS  eachColourHasItsOwnArrowsOnItsPathAndItsOwnFinish
+  PASS  everyPathIsContinuousUniqueAndInsideTheGrid
+  PASS  fixedSquareCountsPerLevel
+  PASS  pathLengthsMatchTheSpecification
+  PASS  protectionRulesFollowTheSpecification
+  PASS  randomSquaresChangeBetweenGamesButNeverReplaceFixedSquares
+  PASS  startSquaresAreOwnedAndInTheCornerOnMediumAndHard
+  PASS  trackSizesAre52Then64Then72
+CombinedValidationTest
+  PASS  completedMatchSavesAndReloadsCourseCsv
+  PASS  csvSafeNameBoundary
+GameRulesTest
+  PASS  aCorrectAnswerMovesForwardByTheQuestionLevel
+  PASS  aCorrectAnswerStopsAtTheFinish
+  PASS  aCorrectAnswerStopsBeforeAnOpponentBlock
+  PASS  aDoubleBlockCannotBeLandedOn
+  PASS  aDoubleBlockCannotBePassed
+  PASS  aDoubleBlockIsBrokenWhenOnePieceMoves
+  PASS  aDoubleBlockOnTheStartSquareStopsEntering
+  PASS  aFullMoveTakesPriorityOverAPartialBlockedMove
+  PASS  aPieceLeavesTheCastleOnlyWithASix
+  PASS  aPieceMovedBackBySabotageDoesNotTriggerItsNewSquare
+  PASS  aPieceMovedBackBySabotageStillCaptures
+  PASS  aSixCanMoveAPieceAlreadyOnTheBoard
+  PASS  aSixWithBoostOffersEnterOrTheMultipliedMove
+  PASS  aSixWithBoostZeroStillEntersAPiece
+  PASS  aWrongAnswerMovesBackByTheQuestionLevel
+  PASS  aWrongAnswerNeverMovesBehindTheStartSquare
+  PASS  actionsAreRejectedInTheWrongPhase
+  PASS  allPartialChoicesAreAvailableWhenNoFullMoveExists
+  PASS  anAdjacentBlockDoesNotOfferAZeroLengthMove
+  PASS  boostMultipliesTheNormalDieByNMinusOne
+  PASS  boostOfOneGivesZeroStepsAndNoMove
+  PASS  enteringFromCastleTakesPriorityOverAPartialBlockedMove
+  PASS  enteringPutsThePieceOnTheStartSquareAndASixGivesAnotherRoll
+  PASS  hardLevelUsesUltraBoostWithMultipliersUpToFive
+  PASS  landingOnASingleOpponentPieceCapturesIt
+  PASS  listenersReceiveEvents
+  PASS  movingInFrontOfADoubleBlockIsAllowed
+  PASS  ownPiecesFormABlockAndCanShareASquare
+  PASS  piecesOnASafeSquareCannotBeCaptured
+  PASS  piecesOnAStartSquareCannotBeCaptured
+  PASS  setupRulesAreEnforced
+  PASS  surpriseBackThreeSquares
+  PASS  surpriseBackToCastle
+  PASS  surpriseLoseNextTurn
+  PASS  surpriseMoveOpponentPushesTheChosenPieceBackHalfARoll
+  PASS  surpriseRocketSendsThePieceToTheFinish
+  PASS  surpriseUltraBoostBonusRollDoesNotCountTowardThreeSixes
+  PASS  surpriseWeightsMatchTheSpecification
+  PASS  theFinishNeedsAnExactRoll
+  PASS  theGameEndsWhenAllPlayersButOneHaveFinished
+  PASS  theThirdSixInARowIsCancelledAndTheTurnPasses
+  PASS  tooBigARollMustBeUsedByAnotherPiece
+Iteration1RegressionTest
+  PASS  answeringQuestionCanCaptureAndTriggerAnotherQuestion
+  PASS  homePathIgnoresLargeMultiplier
+  PASS  homePathUsesNormalDieEvenWhenBoostIsZero
+  PASS  surpriseBackThreeCanTriggerAQuestion
+  PASS  wrongAnswerCapturesOnBackwardLanding
+ModelValuesTest
+  PASS  aValidQuestionIsTrimmedAndKnowsItsCorrectAnswer
+  PASS  coloursAreSeatedClockwiseFromRed
+  PASS  difficultySettingsMatchTheSpecification
+  PASS  durationsAreFormattedAsMinutesOrHours
+  PASS  eachDifficultyUsesTheRightMultiplierDie
+  PASS  invalidQuestionsAreRejectedByTheRecord
+  PASS  questionAnswersCannotBeChangedAfterCreation
+  PASS  questionLevelsMoveOneTwoOrThreeSteps
+  PASS  theGameRecordNamesTheWinnerAndCopiesTheRanking
+  PASS  withIdKeepsEverythingElse
+PlayerAndPieceTest
+  PASS  aNewPlayerHasFourNumberedPiecesAllInTheCastle
+  PASS  aPieceCanBeSentBackToTheCastle
+  PASS  aPieceOnTheBoardIsActiveUntilItReachesTheFinish
+  PASS  positionsOutsideThePathAreRejected
+  PASS  skipNextTurnFlagAndDisplayText
+  PASS  thePieceListCannotBeChangedFromOutside
+  PASS  thePlayerHasFinishedOnlyWhenAllFourPiecesHave
+ReviewRegressionTest
+  PASS  blockedOnlyMoveMustStopBeforeBlock
+  PASS  homeLaneUsesNormalWhenMultiplierZero
+  PASS  oddOpponentSurpriseRoundsUp
+SquareAndCellTest
+  PASS  changingASquareClearsItsOldOwnerAndLevel
+  PASS  everySurpriseHasADescription
+  PASS  fourQuarterTurnsBringACellBackToWhereItStarted
+  PASS  onlySafeStartHomeAndSurpriseSquaresAreProtected
+  PASS  shiftMovesDiagonallyAndTouchesFindsTheEightNeighbours
+  PASS  squareDescriptionShowsTypeOwnerLevelAndPosition
+  PASS  surpriseDrawFollowsTheWeightBoundariesExactly
+ComputerPlayerTest
+  PASS  computerAnswersMatchTheConfiguredAccuracy
+  PASS  computerOnlyGamesAlwaysFinishOnEveryLevel
+DiceStrategyTest
+  PASS  boostDiceHasThreeFacesAllReachable
+  PASS  diceRollSixIsDetectedOnlyFromTheNormalFace
+  PASS  diceRollWithAMultiplierComputesTheRightStepsAndDescription
+  PASS  diceRollWithoutAMultiplierReportsNoMultiplierAndStepsEqualNormal
+  PASS  normalDiceHasSixFacesAllReachable
+  PASS  oneStepIsDescribedInSingular
+  PASS  rollNeverExceedsTheDiesFaceCount
+  PASS  ultraBoostDiceHasSixFacesAllReachable
+MiniJsonTest
+  PASS  allStringEscapesAreDecoded
+  PASS  controlCharactersAreEscapedWhenWriting
+  PASS  emptyContainersAndNestedValuesParse
+  PASS  errorsNameThePosition
+  PASS  malformedJsonIsRejected
+  PASS  objectKeysKeepTheirOrder
+  PASS  unsupportedTypesCannotBeWritten
+  PASS  whitespaceAroundValuesIsIgnored
+  PASS  wholeNumbersBecomeLongsAndDecimalsBecomeDoubles
+PersistenceTest
+  PASS  aDamagedHistoryLineIsSkipped
+  PASS  aHistoryFileSavedByExcelWithAByteOrderMarkIsStillUsable
+  PASS  aMismatchedHistoryHeaderIsNotOverwritten
+  PASS  anEmptyHistoryFileGetsItsHeaderBackInsteadOfFailingForever
+  PASS  attachedCourseTemplateSampleIsRead
+  PASS  courseHistoryNeedsTwoNamesAndCsvSafeNames
+  PASS  firstRunStartsTheHistoryFromTheBundledLecturerCsv
+  PASS  historyIsSavedAndReadBackNewestFirst
+  PASS  jsonRoundTripsAllValueTypes
+  PASS  questionsAreStoredEncryptedAndCreatedFromDefaultsOnFirstRun
+  PASS  theDefaultQuestionBankIsValidAndLargeEnough
+QuestionJsonAndPathsTest
+  PASS  dataFilesLiveInsideTheBaseFolder
+  PASS  historyIsEmptyWhenNoGameWasPlayedYet
+  PASS  levelNamesAreCaseInsensitiveAndTopicIsOptional
+  PASS  questionsRoundTripThroughJson
+  PASS  theDataFolderCanBeOverriddenWithASystemProperty
+  PASS  theRootMustBeAnArrayOfObjects
+PasswordHasherTest
+  PASS  encryptingTheSameTextTwiceGivesDifferentCiphertext
+  PASS  hashingIsRepeatableForTheSameSaltAndIterations
+  PASS  theRightPasswordVerifiesAndAWrongOneDoesNot
+  PASS  theSaltAndIterationCountChangeTheHash
+SecurityTest
+  PASS  encryptedDataRoundTripsAndTamperingIsDetected
+  PASS  fiveWrongPasswordsLockTheLogin
+  PASS  loginWorksOnlyWithTheRightPassword
+  PASS  sessionsExpire
+  PASS  thePasswordCanBeChanged
+  PASS  thePasswordIsStoredOnlyAsASaltedHash
+  PASS  weakPasswordsAreRejectedAndSetupHappensOnce
+QuestionServiceTest
+  PASS  adminCanAddEditAndDelete
+  PASS  adminOperationsNeedAValidSession
+  PASS  drawReturnsTheRequestedLevelWithoutRepeatsUntilAllAreUsed
+  PASS  invalidQuestionsAreRejected
+  PASS  theBankKeepsAtLeastThirtyQuestionsAndEveryLevel
+
+Tests run: 136, passed: 136, failed: 0

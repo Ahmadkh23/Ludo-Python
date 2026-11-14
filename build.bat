@@ -26,7 +26,7 @@ echo === Compiling tests
 javac --release 17 -encoding UTF-8 -Xlint:all -cp build\classes -d build\test-classes @build\test-sources.txt || (echo [ERROR] Test compilation failed & exit /b 1)
 
 echo === Running tests
-java -cp "build\classes;build\test-classes" com.eduludo.testing.TestRunner --scan build\test-classes || (echo [ERROR] Tests failed - the JAR was not built & exit /b 1)
+java -Djava.awt.headless=true -cp "build\classes;build\test-classes" com.eduludo.testing.TestRunner --scan build\test-classes || (echo [ERROR] Tests failed - the JAR was not built & exit /b 1)
 
 echo === Creating dist\EduLudo.jar
 jar --create --file dist\EduLudo.jar --main-class com.eduludo.App -C build\classes . || (echo [ERROR] jar failed & exit /b 1)
@@ -45,3 +45,4 @@ if /i "%~1"=="exe" (
     echo Done: dist\EduLudo\EduLudo.exe   ^(copy the whole dist\EduLudo folder - no Java install needed^)
 )
 endlocal
+

@@ -1,7 +1,7 @@
 package com.eduludo.service;
 
-import com.eduludo.model.Question;
-import com.eduludo.model.QuestionLevel;
+import com.eduludo.Model.Question;
+import com.eduludo.Model.QuestionLevel;
 import com.eduludo.persistence.QuestionRepository;
 import com.eduludo.security.AdminSession;
 import com.eduludo.security.AuthService;
@@ -127,3 +127,4 @@ public class QuestionServiceTest {
                 () -> new Question(1, QuestionLevel.EASY, "t", "Q", List.of("a", "b", "c", "d"), 4), "bad correct index");
     }
 }
+

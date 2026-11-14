@@ -43,3 +43,4 @@ public final class Assert {
         throw new AssertionError(message + " - expected " + type.getSimpleName() + " but nothing was thrown");
     }
 }
+

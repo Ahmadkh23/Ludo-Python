@@ -264,3 +264,4 @@ public final class MiniJson {
         sb.append("  ".repeat(indent));
     }
 }
+

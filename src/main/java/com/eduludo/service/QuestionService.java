@@ -1,8 +1,8 @@
 package com.eduludo.service;
 
-import com.eduludo.model.Question;
-import com.eduludo.model.QuestionLevel;
-import com.eduludo.model.QuestionProvider;
+import com.eduludo.Model.Question;
+import com.eduludo.Model.QuestionLevel;
+import com.eduludo.Model.QuestionProvider;
 import com.eduludo.persistence.QuestionRepository;
 import com.eduludo.security.AdminSession;
 import com.eduludo.security.AuthService;
@@ -137,3 +137,4 @@ public final class QuestionService implements QuestionProvider {
         bags.clear();
     }
 }
+

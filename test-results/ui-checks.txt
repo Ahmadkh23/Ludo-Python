@@ -1,0 +1,14 @@
+EduLudo - Swing interaction checks
+Date: 12/11/2026 20:27
+Command: sh verify-ui.sh
+
+PASS T1.6 partial move before block when no full move exists
+PASS T1.5/T1.7 reject double roll and invalid selection
+PASS T1.6/T1.7 enter, move, advance turn
+PASS T1.1/T1.8 menu action callback and render
+PASS T1.2/T1.8 setup validation, handoff and Back
+PASS T1.4/T1.10 screen shows current player and refreshes
+PASS T1.12 controller/view/model integration start and roll
+PASS T1.10/T1.12 controller selects piece and updates display
+PASS T1.10/T1.12 move is applied and the display shows the next player
+Additional checks: 9 passed, 0 failed
